@@ -180,6 +180,21 @@ string DateManager::convertFromLineToLineWithDash(int date)
     return dashDate;
 }
 
+int DateManager::extractMonthFromLineWithDash(string date)
+{
+    date.erase(7,9);
+    date.erase(0,5);
+
+    return AuxiliaryMethods::convertStringToInt(date);
+}
+
+int DateManager::extractYearFromLineWithDash(string date)
+{
+    date.erase(4,9);
+
+    return AuxiliaryMethods::convertStringToInt(date);
+}
+
 DateManager::DateManager()
 {
     DateManager::currentDate();

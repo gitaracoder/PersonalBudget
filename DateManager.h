@@ -26,5 +26,7 @@ public:
     int convertFromLineWithDashToLine(string date);
     string convertFromLineToLineWithDash(int date);
     string convertDateFromSeparateToLineWithDashes(int year, int month, int day);
+    int extractMonthFromLineWithDash(string date);
+    int extractYearFromLineWithDash(string date);
 };
 #endif // DATE_MANAGER
