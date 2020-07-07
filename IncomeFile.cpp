@@ -4,35 +4,26 @@ void IncomeFile::addIncomeToFile(Income income)
 {
     CMarkup xml;
     string sPath = "Incomes.xml";
-
     xml.Load(sPath);
 
-// If the root element "INCOMES" does not exist, create it.
     if (!xml.FindElem("INCOMES"))
     {
         xml.AddElem(("INCOMES"));
     }
 
-// Navigate into the root element.
     if (xml.IntoElem())
     {
-        // AddElem() adds a new element at the end of the existing elements.
         if (xml.AddElem(("SINGLE_INCOME") ) && xml.IntoElem())
         {
             xml.AddElem("USER_ID", AuxiliaryMethods::convertIntToString(income.getUserId()));
             xml.AddElem("INC_ID", AuxiliaryMethods::convertIntToString(income.getIncomeId()));
             xml.AddElem("DATE", AuxiliaryMethods::convertIntToString(income.getDate()));
             xml.AddElem("ITEM", income.getItem());
-            xml.AddElem("AMOUNT", AuxiliaryMethods::convertIntToString(income.getAmount()));
+            xml.AddElem("AMOUNT", AuxiliaryMethods::convertFloatToString(income.getAmount()));
             xml.OutOfElem();
         }
-
-        // Since the file will be closed, you don't really have to navigate out
-        // of the root here, but it is just good practice to always have a
-        // matching IntoElem()/OutOfElem() pair.
         xml.OutOfElem();
     }
-
     xml.Save(sPath);
 }
 
@@ -44,9 +35,8 @@ vector <Income> IncomeFile::loadIncomesOfLoggedInUserFromFile(int userID)
     CMarkup xml;
     xml.Load("Incomes.xml");
 
-
-    xml.FindElem(); // root ORDER element
-    xml.IntoElem(); // inside ORDER
+    xml.FindElem();
+    xml.IntoElem();
     while (xml.FindElem("SINGLE_INCOME"))
     {
         xml.IntoElem();
@@ -67,14 +57,35 @@ vector <Income> IncomeFile::loadIncomesOfLoggedInUserFromFile(int userID)
             income.setItem(xml.GetData());
 
             xml.FindElem("AMOUNT");
-            income.setAmount(AuxiliaryMethods::convertStringToInt(xml.GetData()));
-
-            xml.OutOfElem();
+            income.setAmount(AuxiliaryMethods::convertStringToFloat(xml.GetData()));
 
             incomes.push_back(income);
         }
-
+        xml.OutOfElem();
     }
 
     return incomes;
+}
+
+int IncomeFile::getLastIncomeId()
+{
+    int n = 0;
+    CMarkup xml;
+    xml.Load("Incomes.xml");
+    string lastIncomeId;
+    xml.FindElem();
+    xml.IntoElem();
+    while (xml.FindElem("SINGLE_INCOME"))
+    {
+        xml.IntoElem();
+        xml.FindElem("INC_ID");
+        lastIncomeId = xml.GetData();
+        xml.OutOfElem();
+        n++;
+    }
+
+    if (n == 0)
+        return 0;
+    else
+        return AuxiliaryMethods::convertStringToInt(lastIncomeId);
 }

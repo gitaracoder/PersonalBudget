@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <string>
 
 using namespace std;
 
@@ -14,5 +15,7 @@ public:
     static float retrieveFloatNumber();
     static string convertIntToString(int number);
     static int convertStringToInt(string number);
+    static string convertFloatToString(float number);
+    static float convertStringToFloat(string number);
 };
 #endif // AUXILIARY_METHODS

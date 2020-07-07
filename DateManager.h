@@ -18,6 +18,7 @@ public:
     int currentMonth;
     int currentYear;
 
+    string getDate();
     int currentMonthDays();
     int daysBetweenDateRange(int beginYear, int endYear, int beginMonth, int endMonth, int beginDay, int endDay);
     bool isLeapYear(int year);

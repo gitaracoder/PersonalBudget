@@ -195,6 +195,24 @@ int DateManager::extractYearFromLineWithDash(string date)
     return AuxiliaryMethods::convertStringToInt(date);
 }
 
+string DateManager::getDate()
+{
+    string date;
+
+    while (true)
+    {
+        date = AuxiliaryMethods::retrieveLine();
+
+        if (isDateCorrect(date))
+        {
+            break;
+        }
+        cout << "Wrong date. Try again: ";
+    }
+
+    return date;
+}
+
 DateManager::DateManager()
 {
     DateManager::currentDate();

@@ -17,6 +17,8 @@ public:
     UserManager();
 
     int idOfSignedInUser;
+    string nameOfSignedInUser;
+    string surnameOfSignedInUser;
 
     void userSignUp();
     User provideDetailsOfNewUser();

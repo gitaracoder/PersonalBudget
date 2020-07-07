@@ -99,6 +99,8 @@ int UserManager::userSignIn()
                     cout << endl << "Signed in successfully." << endl << endl;
                     system("pause");
                     idOfSignedInUser = itr -> getUserId();
+                    nameOfSignedInUser = itr -> getName();
+                    surnameOfSignedInUser = itr -> getSurname();
                     return 0;
                 }
             }
@@ -146,5 +148,4 @@ UserManager::UserManager()
 {
     UserFile userFile;
     users = userFile.loadUsersFromFile();
-    idOfSignedInUser = 1;
 }

@@ -2,7 +2,7 @@
 
 void BudgetManager::sortExpensesAscendingByDate()
 {
-    /*
+
     struct less_than_key
     {
         inline bool operator() ( Expense& struct1,  Expense& struct2)
@@ -11,12 +11,12 @@ void BudgetManager::sortExpensesAscendingByDate()
         }
     };
     sort(expenses.begin(), expenses.end(), less_than_key());
-    */
+
 }
 
 void BudgetManager::sortIncomesAscendingByDate()
 {
-    /*
+
     struct less_than_key
     {
         inline bool operator() ( Income& struct1,  Income& struct2)
@@ -25,7 +25,7 @@ void BudgetManager::sortIncomesAscendingByDate()
         }
     };
     sort(incomes.begin(), incomes.end(), less_than_key());
-    */
+
 }
 
 void BudgetManager::addIncome()
@@ -41,7 +41,7 @@ void BudgetManager::addIncome()
     cout << "2. Custom date income" << endl;
     cout << "9. Back" << endl;
 
-    cout << "Selection: ";
+    cout << endl << "Choice: ";
 
     selection = AuxiliaryMethods::retrieveCharacter();
 
@@ -55,6 +55,10 @@ void BudgetManager::addIncome()
         break;
     case '9':
         return;
+        break;
+    default:
+        cout << "No such option.";
+        system("pause");
         break;
     }
 }
@@ -70,6 +74,9 @@ void BudgetManager::addIncomeWithTodayDate()
     income = getIncomeDetails(todayDate);
     incomes.push_back(income);
     incomeFile.addIncomeToFile(income);
+
+    cout << endl << "Income added." << endl;
+    system("pause");
 }
 
 void BudgetManager::addIncomeWithCustomDate()
@@ -85,6 +92,7 @@ void BudgetManager::addIncomeWithCustomDate()
     if(!dateManager.isDateCorrect(insertedDate))
     {
         cout << "Wrong date" << endl;
+        system("pause");
         return;
     }
     else
@@ -93,6 +101,9 @@ void BudgetManager::addIncomeWithCustomDate()
     income = getIncomeDetails(customDate);
     incomes.push_back(income);
     incomeFile.addIncomeToFile(income);
+
+    cout << endl << "Income added." << endl;
+    system("pause");
 }
 
 Income BudgetManager::getIncomeDetails(int date)
@@ -111,7 +122,7 @@ Income BudgetManager::getIncomeDetails(int date)
     cout << "Income amount: ";
     incomeAmount = AuxiliaryMethods::retrieveFloatNumber();
 
-    income.setUserId(userManager.idOfSignedInUser);
+    income.setUserId(ID_OF_LOGGED_IN_USER);
     income.setIncomeId(getIdOfNewIncome());
     income.setDate(date);
     income.setItem(incomeDescription);
@@ -133,7 +144,7 @@ void BudgetManager::addExpense()
     cout << "2. Custom date expense" << endl;
     cout << "9. Back" << endl;
 
-    cout << "Selection: ";
+    cout << endl << "Choice: ";
 
     selection = AuxiliaryMethods::retrieveCharacter();
 
@@ -147,6 +158,10 @@ void BudgetManager::addExpense()
         break;
     case '9':
         return;
+        break;
+    default:
+        cout << "No such option.";
+        system("pause");
         break;
     }
 }
@@ -162,6 +177,9 @@ void BudgetManager::addExpenseWithTodayDate()
     expense = getExpenseDetails(todayDate);
     expenses.push_back(expense);
     expenseFile.addExpenseToFile(expense);
+
+    cout << endl << "Expense added." << endl;
+    system("pause");
 }
 
 void BudgetManager::addExpenseWithCustomDate()
@@ -177,6 +195,7 @@ void BudgetManager::addExpenseWithCustomDate()
     if(!dateManager.isDateCorrect(insertedDate))
     {
         cout << "Wrong date" << endl;
+        system("pause");
         return;
     }
     else
@@ -185,6 +204,9 @@ void BudgetManager::addExpenseWithCustomDate()
     expense = getExpenseDetails(customDate);
     expenses.push_back(expense);
     expenseFile.addExpenseToFile(expense);
+
+    cout << endl << "Expense added." << endl;
+    system("pause");
 }
 
 Expense BudgetManager::getExpenseDetails(int date)
@@ -203,7 +225,7 @@ Expense BudgetManager::getExpenseDetails(int date)
     cout << "Expense amount: ";
     expenseAmount = AuxiliaryMethods::retrieveFloatNumber();
 
-    expense.setUserId(userManager.idOfSignedInUser);
+    expense.setUserId(ID_OF_LOGGED_IN_USER);
     expense.setExpenseId(getIdOfNewExpense());
     expense.setDate(date);
     expense.setItem(expenseDescription);
@@ -230,18 +252,12 @@ void BudgetManager::showAllExpenses()
 
 int BudgetManager::getIdOfNewIncome()
 {
-    if (incomes.empty() == true)
-        return 1;
-    else
-        return incomes.back().getIncomeId() + 1;
+    return incomeFile.getLastIncomeId() + 1;
 }
 
 int BudgetManager::getIdOfNewExpense()
 {
-    if (expenses.empty() == true)
-        return 1;
-    else
-        return expenses.back().getExpenseId() + 1;
+    return expenseFile.getLastExpenseId() + 1;
 }
 
 void BudgetManager::showBallanceFromCurrentMonth()
@@ -249,7 +265,7 @@ void BudgetManager::showBallanceFromCurrentMonth()
     float sumOfIncomes = 0;
     float sumOfExpenses = 0;
 
-    cout << "Incomes: " << endl;
+    cout << endl << "Incomes: " << endl;
 
     for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
     {
@@ -259,6 +275,9 @@ void BudgetManager::showBallanceFromCurrentMonth()
             sumOfIncomes += itr->getAmount();
         }
     }
+
+    if (sumOfIncomes == 0)
+        cout << "No incomes in selected period." << endl;
 
     cout << endl << "Expenses: " << endl;
 
@@ -271,17 +290,28 @@ void BudgetManager::showBallanceFromCurrentMonth()
         }
     }
 
-    cout << endl << "Sum of incomes: " << sumOfIncomes << endl;
-    cout << "Sum of expenses: " << sumOfExpenses << endl;
-    cout << "Ballance: " << sumOfIncomes - sumOfExpenses << endl;
+    if (sumOfExpenses == 0)
+        cout << "No expenses in selected period." << endl << endl;
+
+    if (sumOfIncomes != 0)
+        cout << endl << "Sum of incomes: " << sumOfIncomes << endl;
+
+    if (sumOfExpenses != 0)
+        cout << "Sum of expenses: " << sumOfExpenses << endl << endl;
+
+    if ((sumOfIncomes != 0)&&(sumOfExpenses != 0))
+        cout << "Ballance: " << sumOfIncomes - sumOfExpenses << endl << endl;
+
+    system("pause");
 }
 
 void BudgetManager::showBallangeFromPreviousMonth()
 {
+
     float sumOfIncomes = 0;
     float sumOfExpenses = 0;
 
-    cout << "Incomes: " << endl;
+    cout << endl << "Incomes: " << endl;
 
     for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
     {
@@ -291,6 +321,9 @@ void BudgetManager::showBallangeFromPreviousMonth()
             sumOfIncomes += itr->getAmount();
         }
     }
+
+    if (sumOfIncomes == 0)
+        cout << "No incomes in selected period." << endl;
 
     cout << endl << "Expenses: " << endl;
 
@@ -303,29 +336,35 @@ void BudgetManager::showBallangeFromPreviousMonth()
         }
     }
 
-    cout << endl << "Sum of incomes: " << sumOfIncomes << endl;
-    cout << "Sum of expenses: " << sumOfExpenses << endl;
-    cout << "Ballance: " << sumOfIncomes - sumOfExpenses << endl;
+    if (sumOfExpenses == 0)
+        cout << "No expenses in selected period." << endl << endl;
+
+    if (sumOfIncomes != 0)
+        cout << endl << "Sum of incomes: " << sumOfIncomes << endl;
+
+    if (sumOfExpenses != 0)
+        cout << "Sum of expenses: " << sumOfExpenses << endl << endl;
+
+    if ((sumOfIncomes != 0)&&(sumOfExpenses != 0))
+        cout << "Ballance: " << sumOfIncomes - sumOfExpenses << endl << endl;
+
+    system("pause");
 }
 
 void BudgetManager::showBallanceFromSelectedPeriod()
 {
     string beginDate, endDate;
 
-    cout << "Begin date: ";
-    beginDate = AuxiliaryMethods::retrieveLine();
-    if (!dateManager.isDateCorrect(beginDate))
-        cout << "Wrong date";
+    cout << endl << "Begin date: ";
+    beginDate = dateManager.getDate();
 
     cout << "End date: ";
-    endDate = AuxiliaryMethods::retrieveLine();
-    if (!dateManager.isDateCorrect(endDate))
-        cout << "Wrong date";
+    endDate = dateManager.getDate();
 
     float sumOfIncomes = 0;
     float sumOfExpenses = 0;
 
-    cout << "Incomes: " << endl;
+    cout << endl << "Incomes: " << endl;
 
     for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
     {
@@ -335,6 +374,9 @@ void BudgetManager::showBallanceFromSelectedPeriod()
             sumOfIncomes += itr->getAmount();
         }
     }
+
+    if (sumOfIncomes == 0)
+        cout << "No incomes in selected period." << endl;
 
     cout << endl << "Expenses: " << endl;
 
@@ -347,27 +389,27 @@ void BudgetManager::showBallanceFromSelectedPeriod()
         }
     }
 
-    cout << endl << "Sum of incomes: " << sumOfIncomes << endl;
-    cout << "Sum of expenses: " << sumOfExpenses << endl;
-    cout << "Ballance: " << sumOfIncomes - sumOfExpenses << endl;
+    if (sumOfExpenses == 0)
+        cout << "No expenses in selected period." << endl << endl;
+
+    if (sumOfIncomes != 0)
+        cout << endl << "Sum of incomes: " << sumOfIncomes << endl;
+
+    if (sumOfExpenses != 0)
+        cout << "Sum of expenses: " << sumOfExpenses << endl << endl;
+
+    if ((sumOfIncomes != 0)&&(sumOfExpenses != 0))
+        cout << "Ballance: " << sumOfIncomes - sumOfExpenses << endl << endl;
+
+    system("pause");
 }
 
 void BudgetManager::showIncomes(Income income)
 {
-    cout << "userID: " << income.getUserId() << " incID: " << income.getIncomeId() <<
-         " Date: " << dateManager.convertFromLineToLineWithDash(income.getDate()) <<
-         " Description: " << income.getItem() << " Amount: " << income.getAmount() << endl;
+    cout << "Income ID: " << income.getIncomeId() << " Date: " << dateManager.convertFromLineToLineWithDash(income.getDate()) << " Amount: " << income.getAmount() << " Description: " << income.getItem()  << endl;
 }
 
 void BudgetManager::showExpenses(Expense expense)
 {
-    cout << "userID: " << expense.getUserId() << " expID: " << expense.getExpenseId() <<
-         " Date: " << dateManager.convertFromLineToLineWithDash(expense.getDate()) <<
-         " Description: " << expense.getItem() << " Amount: " << expense.getAmount() << endl;
-}
-
-BudgetManager::BudgetManager()
-{
-    expenses = expenseFile.loadExpensesOfLoggedInUserFromFile(1);
-    incomes = incomeFile.loadIncomesOfLoggedInUserFromFile(1);
+    cout << "Expense ID: " << expense.getExpenseId() << " Date: " << dateManager.convertFromLineToLineWithDash(expense.getDate()) << " Amount: " << expense.getAmount() << " Description: " << expense.getItem()  << endl;
 }

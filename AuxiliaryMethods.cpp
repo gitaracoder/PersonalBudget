@@ -28,21 +28,16 @@ char AuxiliaryMethods::retrieveCharacter()
 
 float AuxiliaryMethods::retrieveFloatNumber()
 {
-    float number;
-    bool correct;
+    float floatNumber;
+    string number;
+    getline(cin, number);
 
-    do
-    {
-        cin >> number;
-        correct = cin.good();
-        cin.clear();
-        cin.sync();
+    if (number.find(',') != string::npos)
+        number.replace(number.find(','), 1, ".");
 
-        if(correct != true)
-            cout << "Wrong input" << endl;
-    }
-    while(correct != true);
-    return number;
+    floatNumber = stof(number);
+
+    return floatNumber;
 }
 
 int AuxiliaryMethods::convertStringToInt(string number)
@@ -59,4 +54,14 @@ string AuxiliaryMethods::convertIntToString(int number)
     ss << number;
     string str = ss.str();
     return str;
+}
+
+string AuxiliaryMethods::convertFloatToString(float number)
+{
+    return to_string(number);
+}
+
+float AuxiliaryMethods::convertStringToFloat(string number)
+{
+    return stof(number);
 }

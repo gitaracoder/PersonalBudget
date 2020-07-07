@@ -16,7 +16,7 @@ public:
     CMarkup xml;
     void addIncomeToFile(Income income);
     vector <Income> loadIncomesOfLoggedInUserFromFile(int userID);
-
+    int getLastIncomeId();
 };
 
 #endif // INCOME_FILE

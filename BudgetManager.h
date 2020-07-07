@@ -21,13 +21,23 @@ public:
     ExpenseFile expenseFile;
     IncomeFile incomeFile;
 
+    const int ID_OF_LOGGED_IN_USER;
+
     vector <Income> incomes;
     vector <Expense> expenses;
 
-    BudgetManager();
-
     void sortExpensesAscendingByDate();
     void sortIncomesAscendingByDate();
+
+
+    BudgetManager(int idOfLoggedInUser) : ID_OF_LOGGED_IN_USER(idOfLoggedInUser)
+    {
+        expenses = expenseFile.loadExpensesOfLoggedInUserFromFile(ID_OF_LOGGED_IN_USER);
+        incomes = incomeFile.loadIncomesOfLoggedInUserFromFile(ID_OF_LOGGED_IN_USER);
+        sortExpensesAscendingByDate();
+        sortIncomesAscendingByDate();
+    };
+
 
     void addIncome();
     void addIncomeWithTodayDate();
@@ -49,11 +59,7 @@ public:
     void showBallangeFromPreviousMonth();
     void showBallanceFromSelectedPeriod();
 
-    float calculateSumOfIncomes();
-    float calculateSumOfExpenses();
-
     void showIncomes(Income income);
     void showExpenses(Expense expense);
-
 };
 #endif // BUDGET_MANAGER

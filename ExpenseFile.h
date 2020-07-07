@@ -16,6 +16,7 @@ public:
     CMarkup xml;
     void addExpenseToFile(Expense expense);
     vector <Expense> loadExpensesOfLoggedInUserFromFile(int userID);
+    int getLastExpenseId();
 };
 
 #endif // EXPENSE_FILE

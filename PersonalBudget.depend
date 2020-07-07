@@ -1,0 +1,235 @@
+# depslib dependency file v1.0
+1593518489 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\datemanager.cpp
+	"DateManager.h"
+
+1593518503 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\datemanager.h
+	<iostream>
+	<windows.h>
+	<winbase.h>
+	"AuxiliaryMethods.h"
+
+1593510508 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\expense.cpp
+	"Expense.h"
+
+1593428939 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\expense.h
+	<iostream>
+
+1593432342 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\income.cpp
+	"Income.h"
+
+1593432342 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\income.h
+	<iostream>
+	"Expense.h"
+
+1593523764 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\main.cpp
+	<iostream>
+	"BudgetManager.h"
+	"Income.h"
+	"UserManager.h"
+	"UserFile.h"
+	"DateManager.h"
+
+1593523728 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\budgetmanager.cpp
+	"BudgetManager.h"
+
+1593513259 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\budgetmanager.h
+	<iostream>
+	<vector>
+	<algorithm>
+	"Income.h"
+	"Expense.h"
+	"AuxiliaryMethods.h"
+	"DateManager.h"
+	"UserManager.h"
+	"ExpenseFile.h"
+	"IncomeFile.h"
+
+1592834926 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\auxiliarymethods.cpp
+	"AuxiliaryMethods.h"
+
+1592834926 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\auxiliarymethods.h
+	<iostream>
+	<sstream>
+
+1592983504 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\user.cpp
+	"User.h"
+
+1592983504 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\user.h
+	<iostream>
+
+1593499770 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\usermanager.cpp
+	"UserManager.h"
+
+1593425484 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\usermanager.h
+	<iostream>
+	<vector>
+	"User.h"
+	"AuxiliaryMethods.h"
+	"UserFile.h"
+
+1591696725 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\markup.cpp
+	<stdio.h>
+	"Markup.h"
+	<errno.h>
+	<iconv.h>
+	<windows.h>
+	<mbstring.h>
+
+1593167533 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\markup.h
+	<stdlib.h>
+	<string.h>
+	<string>
+	<afx.h>
+
+1593425484 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\userfile.h
+	<iostream>
+	<vector>
+	"Markup.h"
+	"User.h"
+	"AuxiliaryMethods.h"
+
+1593425830 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\userfile.cpp
+	"UserFile.h"
+
+1593514803 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\incomefile.cpp
+	"IncomeFile.h"
+
+1593513151 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\incomefile.h
+	<iostream>
+	"Markup.h"
+	"Income.h"
+	"AuxiliaryMethods.h"
+	<vector>
+
+1593511824 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\expensefile.cpp
+	"ExpenseFile.h"
+
+1593513151 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\expensefile.h
+	<iostream>
+	"Markup.h"
+	"Expense.h"
+	"AuxiliaryMethods.h"
+	<vector>
+
+1594121595 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\auxiliarymethods.cpp
+	"AuxiliaryMethods.h"
+
+1594121482 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\auxiliarymethods.h
+	<iostream>
+	<sstream>
+	<string>
+
+1594118383 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\budgetmanager.cpp
+	"BudgetManager.h"
+
+1593698933 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\budgetmanager.h
+	<iostream>
+	<vector>
+	<algorithm>
+	"Income.h"
+	"Expense.h"
+	"AuxiliaryMethods.h"
+	"DateManager.h"
+	"UserManager.h"
+	"ExpenseFile.h"
+	"IncomeFile.h"
+
+1593432344 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\income.h
+	<iostream>
+	"Expense.h"
+
+1593428940 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\expense.h
+	<iostream>
+
+1593773583 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\datemanager.h
+	<iostream>
+	<windows.h>
+	<winbase.h>
+	"AuxiliaryMethods.h"
+
+1594124452 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\usermanager.h
+	<iostream>
+	<vector>
+	"User.h"
+	"AuxiliaryMethods.h"
+	"UserFile.h"
+
+1592983506 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\user.h
+	<iostream>
+
+1593425486 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\userfile.h
+	<iostream>
+	<vector>
+	"Markup.h"
+	"User.h"
+	"AuxiliaryMethods.h"
+
+1593167534 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\markup.h
+	<stdlib.h>
+	<string.h>
+	<string>
+	<afx.h>
+
+1593684052 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\expensefile.h
+	<iostream>
+	"Markup.h"
+	"Expense.h"
+	"AuxiliaryMethods.h"
+	<vector>
+
+1593684134 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\incomefile.h
+	<iostream>
+	"Markup.h"
+	"Income.h"
+	"AuxiliaryMethods.h"
+	<vector>
+
+1593773609 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\datemanager.cpp
+	"DateManager.h"
+
+1593510510 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\expense.cpp
+	"Expense.h"
+
+1594122303 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\expensefile.cpp
+	"ExpenseFile.h"
+
+1593432344 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\income.cpp
+	"Income.h"
+
+1594122343 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\incomefile.cpp
+	"IncomeFile.h"
+
+1593688647 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\main.cpp
+	<iostream>
+	"PersonalBudget.h"
+
+1591696726 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\markup.cpp
+	<stdio.h>
+	"Markup.h"
+	<errno.h>
+	<iconv.h>
+	<windows.h>
+	<mbstring.h>
+
+1592983506 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\user.cpp
+	"User.h"
+
+1593425832 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\userfile.cpp
+	"UserFile.h"
+
+1594124491 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\usermanager.cpp
+	"UserManager.h"
+
+1594124283 source:c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\personalbudget.cpp
+	"PersonalBudget.h"
+
+1594124537 c:\users\jakub\documents\programowanie\repozytoria\personalbudget\personalbudget\personalbudget\personalbudget.h
+	<iostream>
+	"BudgetManager.h"
+	"Income.h"
+	"UserManager.h"
+	"UserFile.h"
+	"DateManager.h"
+	"IncomeFile.h"
+	"ExpenseFile.h"
+
